@@ -34,74 +34,77 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="register-container">
-      <h2>Cadastro</h2>
-      <form onSubmit={handleSubmit} className="register-form">
-      <div className="form-group">
-          <label htmlFor="name">Nome</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        
+    <div className="container">
+      <div className="register-container">
+        <h2>Cadastro</h2>
+        <form onSubmit={handleSubmit} className="register-form">
         <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Senha</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Função</label>
-          <div className="radio-group">
-            <label>
-              <input
-                type="radio"
-                value="usuario"
-                checked={userRole === 'usuario'}
-                onChange={(e) => setUserRole(e.target.value)}
-              />
-              Usuário
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="gerente"
-                checked={userRole === 'gerente'}
-                onChange={(e) => setUserRole(e.target.value)}
-              />
-              Gerente
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="administrador"
-                checked={userRole === 'administrador'}
-                onChange={(e) => setUserRole(e.target.value)}
-              />
-              Administrador
-            </label>
+            <label htmlFor="name">Nome</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
           </div>
-        </div>
-        <button type="submit">Cadastrar</button>
-      </form>
+          
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Senha</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="divider"></div>
+          <div className="form-group centered">
+            <label >Função</label>
+            <div className="radio-group">
+              <label>
+                <input
+                  type="radio"
+                  value="usuario"
+                  checked={userRole === 'usuario'}
+                  onChange={(e) => setUserRole(e.target.value)}
+                />
+                Usuário
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="gerente"
+                  checked={userRole === 'gerente'}
+                  onChange={(e) => setUserRole(e.target.value)}
+                />
+                Gerente
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="administrador"
+                  checked={userRole === 'administrador'}
+                  onChange={(e) => setUserRole(e.target.value)}
+                />
+                Administrador
+              </label>
+            </div>
+          </div>
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
     </div>
   );
 };

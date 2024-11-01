@@ -66,7 +66,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               </label>
             </div>
             <div>
-              <Link to="/register" className="link">Cadastre-se</Link>
+              <Link to="/usuarios/cadastro" className="link">Cadastre-se</Link>
             </div>
           </div>
           <button type="submit" className="submit-button">Entrar</button>

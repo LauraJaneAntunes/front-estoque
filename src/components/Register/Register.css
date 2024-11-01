@@ -2,14 +2,17 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  border-radius: 12px;
+  background-color: var(--cor-fundo);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 h2 {
   text-align: center;
   margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--cor-principal);
 }
 
 .register-form {
@@ -18,47 +21,83 @@ h2 {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-  margin-bottom: 5px;
+  font-weight: normal !important;
+  color: var(--cor-principal);
+  font-size: 16px;
 }
 
-input[type="email"],
-input[type="password"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
 
 input[type="radio"] {
-  margin-right: 5px; /* Reduz o espaço entre a bolinha e o texto */
+  margin-right: 5px;
+}
+
+input { 
+  padding: 10px 14px; 
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 16px;
+  color: var(--cor-texto);
+  background-color: #f9f9f9; 
+  width: 100%; 
+  transition: border-color 0.3s ease;
+} 
+
+input:focus {
+  outline: none;
+  border-color: var(--cor-principal);
+  box-shadow: 0 0 0 3px rgba(247, 91, 109, 0.2);
+}
+
+.divider {
+  height: 2px;
+  background-color: var(--cor-principal); 
+  margin: 20px 0;
+  width: 100%;
 }
 
 .radio-group {
-  display: flex; /* Exibe os botões de opção em linha */
-  justify-content: space-between; /* Distribui o espaço entre os botões de opção */
+  display: flex;
+  justify-content: space-between;
+
 }
 
 .radio-group label {
-  margin-right: 20px; /* Espaçamento entre os rótulos */
+  margin-right: 20px;
+  color: var(--cor-texto);
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
 }
 
 button {
-  padding: 10px;
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--cor-principal);
+  color: var(--cor-fundo);
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  padding: 12px;
   cursor: pointer;
+  font-size: 18px;
+  margin: 0 auto;
+  width: 50%; 
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  display: block;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: var(--cor-destaque);
 }
 
 p {
   text-align: center;
   margin-top: 15px;
+  color: var(--cor-texto);
 }
