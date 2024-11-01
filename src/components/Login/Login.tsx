@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import imgLogin from '../../assets/images/imgLogin.gif';
 import axios from 'axios';
 import './Login.css';
 
@@ -74,7 +75,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       </div>
       <div className="image-container">
         <div  className="image">
-          <img src="/images/imgLogin.gif" alt="Background" className="background-image" />
+          <img src={imgLogin} alt="Background" className="background-image" />
         </div>
       </div>
     </div>
