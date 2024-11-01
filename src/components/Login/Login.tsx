@@ -16,7 +16,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/login', {
+      const response = await axios.post('http://localhost:5000/api/usuarios/login', {
         email,
         password,
       });
@@ -32,34 +32,51 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <div className="container">
+      <div className="login-box">
+        <h2 className="login-title">Faça seu login</h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email" className="label">E-mail</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="seuemail@email.com"
+              className="input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="password" className="label">Senha</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="sua senha"
+              className="input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="checkbox-container">
+            <div>
+              <label className="checkbox-label">
+                <input type="checkbox" className="form-checkbox" />
+                <span className="ml-2 text-gray-700">Lembrar de mim</span>
+              </label>
+            </div>
+            <div>
+              <Link to="/register" className="link">Cadastre-se</Link>
+            </div>
+          </div>
+          <button type="submit" className="submit-button">Entrar</button>
+        </form>
+      </div>
+      <div className="image-container">
+        <div  className="image">
+          <img src="/images/imgLogin.gif" alt="Background" className="background-image" />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Senha</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Entrar</button>
-        <p>
-        Não tem cadastro? <Link to="/usuarios/cadastro">Clique aqui</Link> para se registrar.
-        </p>
-      </form>
+      </div>
     </div>
   );
 };

@@ -9,7 +9,7 @@ interface Product {
 }
 
 interface ProductListProps {
-  products: Product[]; // Definindo a prop products
+  products: Product[];
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {

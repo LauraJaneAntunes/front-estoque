@@ -1,5 +1,18 @@
-body {
+:root {
+  --cor-principal: #F75B6D;
+  --cor-destaque: #DC1E45;
+  --cor-fundo: #FAFAFA;
+  --cor-texto: #41303C;
+  
+}
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

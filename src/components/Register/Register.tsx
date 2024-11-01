@@ -21,11 +21,15 @@ const Register: React.FC = () => {
       });
 
       if (response.status === 200) {
+        alert('Usuário cadastrado com sucesso!');
         // Redireciona para a página de login após o registro
         navigate('/'); 
+      } else {
+        alert('Erro ao cadastrar usuário. Por favor, tente novamente.');
       }
     } catch (error) {
       console.error('Erro ao cadastrar:', error);
+      alert('Erro ao cadastrar usuário. Verifique se o email já está em uso ou entre em contato com o suporte.');
     }
   };
 
