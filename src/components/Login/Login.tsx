@@ -48,6 +48,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
       // Se o login for bem-sucedido, chama onLogin e redireciona para a página de home
       if (response.status === 200) {
+        const token = response.data.token;
+        localStorage.setItem('token', token); 
         onLogin(); // Chama a função onLogin passada como prop
         navigate('/home'); // Redireciona para a página home
       }

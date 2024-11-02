@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import ProductList from '../ProductList/ProductList';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import './Home.css';
 
@@ -26,12 +25,10 @@ const Home: React.FC<HomeProps> = ({ products }) => {
       <Navbar onLogout={handleLogout} /> {/* Passa a função de logout para a Navbar */}
       <div className="home-container">
         <div className="home-actions">
-          <Link to="/produtos/adicionar" className="add-product-button">
-            Adicionar Produto
-          </Link>
+
         </div>
         <h2>Lista de Produtos</h2>
-        <ProductList products={products} /> {/* Passando a lista de produtos */}
+
       </div>
     </div>
   );

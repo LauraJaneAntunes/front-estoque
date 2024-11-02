@@ -16,8 +16,6 @@ const Navbar: React.FC<NavbarProps> = ({ onLogout }) => {
           <img src={logo} alt="Logo" className="logo-image" />
         </Link>
         <ul className="navbar-links">
-          <li><Link to="/produtos" className="navbar-link">Produtos</Link></li>
-          <li><Link to="/usuarios" className="navbar-link">Usuários</Link></li>
           <li><Link to="/home" className="navbar-link">Home</Link></li>
           <li>
             <button className="logout-button" onClick={onLogout}>Sair</button>

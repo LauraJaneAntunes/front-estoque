@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
-import ProductList from './components/ProductList/ProductList';
-import ProductForm from './components/ProductForm/ProductForm';
 import Register from './components/Register/Register';
 
 const App: React.FC = () => {
@@ -19,6 +17,9 @@ const App: React.FC = () => {
       if (isLoggedIn) {
         try {
           const response = await fetch(`${API_URL}/api/produtos`);
+          if (!response.ok) {
+            throw new Error(`Erro na requisição: ${response.status} ${response.statusText}`);
+          }
           const data = await response.json();
           setProducts(data);
         } catch (error) {
@@ -36,9 +37,6 @@ const App: React.FC = () => {
         <Route path="/" element={<Login onLogin={handleLogin} />} />
         <Route path="/usuarios/cadastro" element={<Register />} />
         <Route path="/home" element={<Home products={products} />} />
-        <Route path="/produtos" element={<ProductList products={products} />} />
-        <Route path="/produtos/adicionar" element={<ProductForm />} />
-        <Route path="/produtos/editar/:id" element={<ProductForm />} />
       </Routes>
     </Router>
   );
