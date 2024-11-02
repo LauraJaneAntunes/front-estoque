@@ -1,7 +1,8 @@
 .navbar {
-  background-color: black;
+  background-color: var(--cor-fundo);
   padding: 10px 20px;
-  box-shadow: var(--sombra);
+  border-radius: 6px;
+  border: solid var(--cor-secundaria);
 }
 .navbar-container {
   display: flex;
