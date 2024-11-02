@@ -130,6 +130,7 @@
   background-color: var(--cor-destaque);
 }
 
+/* Media Queries */
 /* Estilos para telas menores (smartphones) */
 @media (max-width: 480px) {
   .container {

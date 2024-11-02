@@ -11,10 +11,34 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const navigate = useNavigate();
+
+  const validate = () => {
+    const newErrors: { email?: string; password?: string } = {};
+    
+    if (!email) {
+      newErrors.email = 'O e-mail é obrigatório.';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'O e-mail deve ser válido.';
+    }
+    
+    if (!password) {
+      newErrors.password = 'A senha é obrigatória.';
+    } else if (password.length < 6) {
+      newErrors.password = 'A senha deve ter pelo menos 6 caracteres.';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Retorna true se não houver erros
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validate()) {
+      return; // Se houver erros de validação, não prosseguir
+    }
 
     try {
       const response = await axios.post('http://localhost:5000/api/usuarios/login', {
@@ -29,6 +53,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       }
     } catch (error) {
       console.error('Erro ao fazer login:', error);
+      alert('Falha ao fazer login. Verifique suas credenciais e tente novamente.');
     }
   };
 
@@ -47,6 +72,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {errors.email && <span className="error">{errors.email}</span>} {/* Exibe erro se houver */}
           </div>
           <div>
             <label htmlFor="password" className="label">Senha</label>
@@ -58,6 +84,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {errors.password && <span className="error">{errors.password}</span>} {/* Exibe erro se houver */}
           </div>
           <div className="checkbox-container">
             <div>
@@ -74,7 +101,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         </form>
       </div>
       <div className="image-container">
-        <div  className="image">
+        <div className="image">
           <img src={imgLogin} alt="Background" className="background-image" />
         </div>
       </div>

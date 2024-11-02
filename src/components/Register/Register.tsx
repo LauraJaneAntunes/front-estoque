@@ -7,22 +7,49 @@ const Register: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [userRole, setUserRole] = useState('usuario');
+  
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
+
+  const validate = () => {
+    const newErrors: { [key: string]: string } = {};
+    
+    if (!name || name.length < 3) {
+      newErrors.name = 'O nome do usuário é obrigatório e deve conter pelo menos 3 caracteres.';
+    }
+    
+    if (!email) {
+      newErrors.email = 'O e-mail é obrigatório.';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'O e-mail deve ser válido.';
+    }
+    
+    if (!password || password.length < 6) {
+      newErrors.password = 'A senha é obrigatória e deve ter no mínimo 6 caracteres.';
+    } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[_@#$%^&*!?-])[A-Za-z\d_@#$%^&*!?-]+$/.test(password)) {
+      newErrors.password = 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Retorna true se não houver erros
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validate()) {
+      return; // Não envia o formulário se houver erros
+    }
+    
     try {
       const response = await axios.post('http://localhost:5000/api/usuarios/cadastrar', {
         name,
         email,
         password,
-        role: userRole,
       });
 
       if (response.status === 200) {
         alert('Usuário cadastrado com sucesso!');
-        // Redireciona para a página de login após o registro
         navigate('/'); 
       } else {
         alert('Erro ao cadastrar usuário. Por favor, tente novamente.');
@@ -38,7 +65,7 @@ const Register: React.FC = () => {
       <div className="register-container">
         <h2>Cadastro</h2>
         <form onSubmit={handleSubmit} className="register-form">
-        <div className="form-group">
+          <div className="form-group">
             <label htmlFor="name">Nome</label>
             <input
               type="text"
@@ -47,8 +74,8 @@ const Register: React.FC = () => {
               onChange={(e) => setName(e.target.value)}
               required
             />
+            {errors.name && <span className="error-message">{errors.name}</span>}
           </div>
-          
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
@@ -58,6 +85,7 @@ const Register: React.FC = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            {errors.email && <span className="error-message">{errors.email}</span>}
           </div>
           <div className="form-group">
             <label htmlFor="password">Senha</label>
@@ -68,39 +96,7 @@ const Register: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
-          <div className="divider"></div>
-          <div className="form-group centered">
-            <label >Função</label>
-            <div className="radio-group">
-              <label>
-                <input
-                  type="radio"
-                  value="usuario"
-                  checked={userRole === 'usuario'}
-                  onChange={(e) => setUserRole(e.target.value)}
-                />
-                Usuário
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  value="gerente"
-                  checked={userRole === 'gerente'}
-                  onChange={(e) => setUserRole(e.target.value)}
-                />
-                Gerente
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  value="administrador"
-                  checked={userRole === 'administrador'}
-                  onChange={(e) => setUserRole(e.target.value)}
-                />
-                Administrador
-              </label>
-            </div>
+            {errors.password && <span className="error-message">{errors.password}</span>}
           </div>
           <button type="submit">Cadastrar</button>
         </form>

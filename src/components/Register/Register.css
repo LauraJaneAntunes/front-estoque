@@ -1,10 +1,12 @@
 .register-container {
-  max-width: 400px;
+  max-width: 90%;
+  width: 400px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 12px;
   background-color: var(--cor-fundo);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  margin-top: 50px;
 }
 
 h2 {
@@ -15,25 +17,10 @@ h2 {
   color: var(--cor-principal);
 }
 
-.register-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
 label {
   font-weight: normal !important;
   color: var(--cor-principal);
   font-size: 16px;
-}
-
-
-input[type="radio"] {
-  margin-right: 5px;
 }
 
 input { 
@@ -51,30 +38,6 @@ input:focus {
   outline: none;
   border-color: var(--cor-principal);
   box-shadow: 0 0 0 3px rgba(247, 91, 109, 0.2);
-}
-
-.divider {
-  height: 2px;
-  background-color: var(--cor-principal); 
-  margin: 20px 0;
-  width: 100%;
-}
-
-.radio-group {
-  display: flex;
-  justify-content: space-between;
-
-}
-
-.radio-group label {
-  margin-right: 20px;
-  color: var(--cor-texto);
-}
-
-.centered {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente */
 }
 
 button {
@@ -96,8 +59,56 @@ button:hover {
   background-color: var(--cor-destaque);
 }
 
-p {
-  text-align: center;
-  margin-top: 15px;
-  color: var(--cor-texto);
+/* Media Queries */
+/* Estilos para telas menores (smartphones) */
+@media (max-width: 480px) {
+  .register-container {
+    width: 90%;
+    padding: 15px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 10px;
+    width: 80%;
+  }
+}
+
+/* Estilos para tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .register-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  button {
+    width: 70%;
+  }
+}
+
+/* Estilos para telas grandes */
+@media (min-width: 769px) {
+  .register-container {
+    width: 400px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  button {
+    width: 50%;
+  }
 }
