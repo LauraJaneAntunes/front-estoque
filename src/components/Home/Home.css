@@ -1,4 +1,4 @@
-.dashboard-container {
+.home-container {
   max-width: 800px; /* Largura máxima do container */
   margin: 20px auto; /* Centraliza o container */
   padding: 20px; /* Espaçamento interno */
@@ -6,13 +6,6 @@
   background-color: var(--cor-fundo); /* Cor de fundo */
   box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
   border: solid #D59F2C;
-}
-
-h1 {
-  text-align: center; /* Centraliza o título principal */
-  color: var(--cor-principal); /* Cor do título */
-  font-size: 32px; /* Tamanho do título */
-  margin-bottom: 20px; /* Margem abaixo do título */
 }
 
 h2 {
@@ -23,7 +16,7 @@ h2 {
   margin-bottom: 10px; /* Margem abaixo do subtítulo */
 }
 
-.dashboard-actions {
+.home-actions {
   display: flex; /* Flexbox para alinhar botões */
   justify-content: space-between; /* Espaça os botões */
   margin-bottom: 20px; /* Margem abaixo das ações */

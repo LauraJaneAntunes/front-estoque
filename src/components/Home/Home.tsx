@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ProductList from '../ProductList/ProductList';
 import Navbar from '../Navbar/Navbar';
-import './Dashboard.css';
+import './Home.css';
 
-interface DashboardProps {
+interface HomeProps {
   products: {
     id: number;
     name: string;
@@ -13,7 +13,7 @@ interface DashboardProps {
   }[];
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ products }) => {
+const Home: React.FC<HomeProps> = ({ products }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -24,9 +24,8 @@ const Dashboard: React.FC<DashboardProps> = ({ products }) => {
   return (
     <div>
       <Navbar onLogout={handleLogout} /> {/* Passa a função de logout para a Navbar */}
-      <div className="dashboard-container">
-        <h1>Dashboard</h1>
-        <div className="dashboard-actions">
+      <div className="home-container">
+        <div className="home-actions">
           <Link to="/produtos/adicionar" className="add-product-button">
             Adicionar Produto
           </Link>
@@ -38,4 +37,4 @@ const Dashboard: React.FC<DashboardProps> = ({ products }) => {
   );
 };
 
-export default Dashboard;
+export default Home;

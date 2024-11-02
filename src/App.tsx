@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login';
-import Dashboard from './components/Dashboard/Dashboard';
+import Home from './components/Home/Home';
 import ProductList from './components/ProductList/ProductList';
 import ProductForm from './components/ProductForm/ProductForm';
 import Register from './components/Register/Register';
@@ -35,7 +35,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Login onLogin={handleLogin} />} />
         <Route path="/usuarios/cadastro" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard products={products} />} />
+        <Route path="/home" element={<Home products={products} />} />
         <Route path="/produtos" element={<ProductList products={products} />} />
         <Route path="/produtos/adicionar" element={<ProductForm />} />
         <Route path="/produtos/editar/:id" element={<ProductForm />} />

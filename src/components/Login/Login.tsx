@@ -46,10 +46,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         password,
       });
 
-      // Se o login for bem-sucedido, chama onLogin e redireciona para a página de dashboard
+      // Se o login for bem-sucedido, chama onLogin e redireciona para a página de home
       if (response.status === 200) {
         onLogin(); // Chama a função onLogin passada como prop
-        navigate('/dashboard'); // Redireciona para a página do dashboard
+        navigate('/home'); // Redireciona para a página home
       }
     } catch (error) {
       console.error('Erro ao fazer login:', error);
