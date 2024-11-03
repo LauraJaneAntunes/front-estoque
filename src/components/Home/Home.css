@@ -94,7 +94,7 @@ h2 {
 }
 
 .button {
-  width: 200px;
+  width: 180px;
   margin-top: 20px;
 }
 
@@ -139,6 +139,6 @@ h2 {
   }
 
   .button {
-    width: 200px; /* Largura padrão do botão */
+    width: 160px; /* Largura padrão do botão */
   }
 }

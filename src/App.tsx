@@ -18,6 +18,7 @@ const App: React.FC = () => {
       if (isLoggedIn) {
         try {
           const response = await fetch(`${API_URL}/api/produtos`);
+          console.log("Response:", response); // Adicione este log para inspecionar a resposta
           if (!response.ok) {
             throw new Error(`Erro na requisição: ${response.status} ${response.statusText}`);
           }
@@ -28,7 +29,6 @@ const App: React.FC = () => {
         }
       }
     };
-
     fetchProducts();
   }, [isLoggedIn, API_URL]);
 

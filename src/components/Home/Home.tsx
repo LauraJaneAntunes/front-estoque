@@ -172,18 +172,17 @@ const Home: React.FC = () => {
                 required
               />
             </div>
-            
-          </form>
-          <div className="form-group">
-              <label htmlFor="image">Imagem:</label>
-              <input
-                type="file"
-                id="image"
-                accept="image/*"
-                onChange={(e) => setImage(e.target.files ? e.target.files[0] : null)}
-              />
-            </div>
-            <button type="submit" className="button">Adicionar Produto</button>
+            <div className="form-group">
+                <label htmlFor="image">Imagem:</label>
+                <input
+                  type="file"
+                  id="image"
+                  accept="image/*"
+                  onChange={(e) => setImage(e.target.files ? e.target.files[0] : null)}
+                />
+              </div>
+              <button type="submit" className="button">Adicionar Produto</button>
+            </form>
         </div>
       </div>
     </div>

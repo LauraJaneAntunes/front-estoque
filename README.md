@@ -29,11 +29,15 @@ O objetivo é criar uma interface robusta e escalável para gerenciar o estoque 
 
    npm install
 
-3. **Executar o projeto**:
+3. **Configurar variavéis de ambiente:**
 
-   npm run dev
+   renomeie o arquivo: envdeexemplo para .env
 
-4. **Acessar a Aplicação**:
+4. **Executar o projeto**:
+
+   npm start
+
+5. **Acessar a Aplicação**:
 
    http://localhost:3000
 
