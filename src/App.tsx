@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import Register from './components/Register/Register';
+import EditProduct from './components/Products/EditProduct';
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,6 +38,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Login onLogin={handleLogin} />} />
         <Route path="/usuarios/cadastro" element={<Register />} />
         <Route path="/home" element={<Home/>} />
+        <Route path="/products/edit/:id" element={<EditProduct />} /> 
       </Routes>
     </Router>
   );

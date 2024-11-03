@@ -11,6 +11,7 @@ const Home: React.FC = () => {
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [image, setImage] = useState<File | null>(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,6 +22,8 @@ const Home: React.FC = () => {
         setProducts(data);
       } catch (error) {
         console.error('Erro ao buscar produtos:', error);
+      } finally {
+        setLoading(false); // Define loading como false após o carregamento
       }
     };
 
@@ -36,6 +39,27 @@ const Home: React.FC = () => {
     const value = e.target.value;
     setPrice(value);
   };
+
+  const handleEdit = (id: number) => {
+    navigate(`/products/edit/${id}`);
+  };
+  
+  const handleDelete = async (id: number) => {
+    const confirmed = window.confirm('Tem certeza que deseja excluir este produto?');
+    if (confirmed) {
+      try {
+        await fetch(`http://localhost:5000/api/produtos/${id}`, {
+          method: 'DELETE',
+        });
+        setProducts(products.filter(product => product.id !== id));
+      } catch (error) {
+        console.error('Erro ao excluir produto:', error);
+      }
+        console.log(`Delete product with id: ${id}`);
+      } else {
+        console.log('Exclusão cancelada.');
+      }
+    };
 
   const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,6 +92,10 @@ const Home: React.FC = () => {
     }
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+}
+  
   return (
     <div className="outer-container">
       <Navbar onLogout={handleLogout} />
@@ -86,11 +114,11 @@ const Home: React.FC = () => {
               <span className="product-price">R${product.price.toFixed(2)}</span>
               <span className="product-quantity">{product.quantity}</span>
               <span className="product-actions">
-              <button>
-                  <Edit2 size={16} /> {/* Ícone de editar */}
+              <button onClick={() => handleEdit(product.id) }>
+                  <Edit2 size={16} /> 
                 </button>
-                <button>
-                  <Trash2 size={16} /> {/* Ícone de excluir */}
+                <button onClick={() => handleDelete(product.id) }>
+                  <Trash2 size={16} /> 
                 </button>
               </span>
             </li>
